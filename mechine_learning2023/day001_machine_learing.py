@@ -7,6 +7,7 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.feature_extraction.text import CountVectorizer,TfidfVectorizer
 from sklearn.preprocessing import MinMaxScaler,StandardScaler
 from sklearn.feature_selection import VarianceThreshold
+from sklearn.decomposition import PCA
 from scipy.stats import pearsonr
 import jieba
 import pandas as pd
@@ -200,6 +201,20 @@ def variance_demo():
 
     return None
 
+def pca_demo():
+    """
+    PCA降维
+    :return:
+    """
+    data = [[2,8,4,5],[6,3,0,8],[5,4,9,1]]
+
+    # 1、实例化转换器类
+    transfer = PCA(n_components=0.95)
+
+    # 2、调用fit_transform
+    data_new = transfer.fit_transform(data)
+    print("data_new:\n",data_new)
+    return None
 
 
 if __name__ == "__main__":
@@ -225,4 +240,6 @@ if __name__ == "__main__":
     # 代码9    标准化
     # stand_demo()
     # 代码10  过滤低方差特征
-    variance_demo()
+    # variance_demo()
+    # 代码11     PCA降维
+    pca_demo()
